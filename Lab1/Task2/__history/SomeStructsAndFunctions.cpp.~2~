@@ -1,0 +1,114 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "SomeStructsAndFunctions.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+template <class U, class V>
+U min(const U & a, const V & b){
+	if(a > b) return b;
+	return a;
+}
+template <class U, class V>
+U max(const U & a, const V & b){
+	if(a < b) return b;
+	return a;
+}
+template <class T>
+void swap(T & a, T & b){
+	T tmp;
+	tmp = a;
+	a = b;
+	b = tmp;
+}
+
+
+struct Dot{
+	int x;
+	int y;
+	Dot(){
+		x = 0;
+		y = 0;
+	}
+	Dot(int xCoord, int yCoord){
+		x = xCoord;
+		y = yCoord;
+	}
+	Dot(const TPoint & a){
+		x = a.x;
+		y = a.y;
+	}
+	operator TPoint() const {
+		TPoint tmp;
+		tmp.x = x;
+		tmp.y = y;
+		return tmp;
+	}
+	Dot & operator = (const TPoint & pnt)
+	{
+		x = pnt.x;
+		y = pnt.y;
+		return *this;
+	}
+};
+
+TPoint Normalize(TPoint Pos){
+	Pos.x = max(Pos.x, 0);
+	Pos.x = min(Pos.x, ScreenWidth);
+	Pos.y = max(Pos.y, 0);
+	Pos.y = min(Pos.y, ScreenHeight);
+	return Pos;
+}
+
+Dot Normalize(Dot Pos){
+	Pos.x = max(Pos.x, 0);
+	Pos.x = min(Pos.x, ScreenWidth);
+	Pos.y = max(Pos.y, 0);
+	Pos.y = min(Pos.y, ScreenHeight);
+	return Pos;
+}
+
+
+struct MyColor{
+	unsigned char R = 255, G = 255, B = 255;
+	bool Clear = true;
+
+	operator TColor() const {
+		if (!Clear)
+			return (TColor)(RGB(R,G,B));
+		return (TColor)(RGB(255,255,255));
+	}
+	MyColor & operator = (const TColor & clr)
+	{
+		R = GetRValue(clr);
+		G = GetGValue(clr);
+		B = GetBValue(clr);
+		Clear = false;
+		return *this;
+	}
+	MyColor(){
+		this->R = 255;
+		this->G = 255;
+		this->B = 255;
+		this->Clear = true;
+	}
+	MyColor(int R, int G, int B){
+		this->R = R;
+		this->G = G;
+		this->B = B;
+		this->Clear = false;
+	}
+	MyColor(const TColor & clr){
+		R = GetRValue(clr);
+		G = GetGValue(clr);
+		B = GetBValue(clr);
+		Clear = false;
+	}
+} clTrans;
+
+MyColor clRand(){
+	srand(rand()+time(0));
+	return MyColor(rand()%256, rand()%256, rand()%256);
+}

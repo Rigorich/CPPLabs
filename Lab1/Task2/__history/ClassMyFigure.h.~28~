@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+#ifndef ClassMyFigureH
+#define ClassMyFigureH
+//---------------------------------------------------------------------------
+
+#include "SomeStructsAndFunctions.h"
+
+class MyFigure{
+
+	public:
+
+		MyColor Border;
+		MyColor Inside;
+		int BorderWidth;
+
+		virtual void Draw(TCanvas* canvas);
+		virtual Dot GetMassCentre() { return Dot(0,0); };
+		virtual void SetMassCentre(Dot where) { return; };
+		virtual int GetArea() { return 0; };
+		virtual int GetPerimeter() { return 0; };
+		virtual void Move(int dx, int dy) { return; };
+		virtual void Rotate(int angle) { return; };
+		virtual void Scale(int percentage) { return; };
+		virtual MyFigure* CreateCopy() { return nullptr; };
+
+};
+
+
+#endif

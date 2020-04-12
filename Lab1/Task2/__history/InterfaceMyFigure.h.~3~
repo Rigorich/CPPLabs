@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------
+
+#ifndef InterfaceMyFigureH
+#define InterfaceMyFigureH
+//---------------------------------------------------------------------------
+#include "SomeStructsAndFunctions.h"
+
+class IMyFigure{
+	protected:
+		Dot MassCentre;
+
+	public:
+		virtual Dot GetMassCentre() = 0;
+		virtual void SetMassCentre(Dot ) = 0;
+		virtual int GetArea() = 0;
+		virtual int GetPerimeter() = 0;
+		virtual void Move(int dx, int dy) = 0;
+		virtual void Rotate(int angle) = 0;
+		virtual void Scale(int percentage) = 0;
+};
+
+#endif
