@@ -13,6 +13,14 @@ object Form1: TForm1
   OldCreateOrder = False
   PixelsPerInch = 96
   TextHeight = 13
+  object ErrorInVar: TPaintBox
+    Left = 8
+    Top = 158
+    Width = 489
+    Height = 39
+    Color = clRed
+    ParentColor = False
+  end
   object Edit1: TEdit
     Left = 16
     Top = 96
@@ -41,7 +49,7 @@ object Form1: TForm1
     OnClick = Button1Click
   end
   object EditA: TEdit
-    Left = 8
+    Left = 17
     Top = 168
     Width = 81
     Height = 21
@@ -49,7 +57,7 @@ object Form1: TForm1
     TextHint = 'a ='
   end
   object EditB: TEdit
-    Left = 111
+    Left = 112
     Top = 168
     Width = 82
     Height = 21
@@ -57,7 +65,7 @@ object Form1: TForm1
     TextHint = 'b = '
   end
   object EditC: TEdit
-    Left = 208
+    Left = 209
     Top = 168
     Width = 81
     Height = 21
@@ -65,7 +73,7 @@ object Form1: TForm1
     TextHint = 'c = '
   end
   object EditD: TEdit
-    Left = 304
+    Left = 305
     Top = 168
     Width = 81
     Height = 21
@@ -73,7 +81,7 @@ object Form1: TForm1
     TextHint = 'd = '
   end
   object EditE: TEdit
-    Left = 391
+    Left = 400
     Top = 168
     Width = 81
     Height = 21

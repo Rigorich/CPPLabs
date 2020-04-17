@@ -70,17 +70,6 @@ public:
 	~Stack(){
 		clear();
 	}
-
-	int Length(){
-		Vertex* it = CurVrt;
-		int Ans = 0;
-		while(it != nullptr){
-			Ans++;
-			it = it->prev;
-		}
-		return Ans;
-	}
-
 };
 
 //---------------------------------------------------------------------------

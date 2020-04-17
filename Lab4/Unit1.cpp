@@ -44,8 +44,11 @@ double StringToFloat(AnsiString s){
 	bool OK = TryStrToFloat(s, t);
 	if(!OK){
 		t = 0;
-		ShowMessage("Неверное значение переменной");
-        //throw 42;
+		Form1->ErrorInVar->Canvas->Brush->Color = clRed;
+		Form1->ErrorInVar->Canvas->FloodFill(1,1,clRed,fsBorder);
+		// По неизвестной мне причине любая из следующих двух строк кода вызывает необрабатываемую ошибку
+		//ShowMessage("Неверное значение переменной");
+		//throw 42;
 	}
 	return t;
 }
@@ -77,6 +80,8 @@ double GetVarValue(char x){
 void __fastcall TForm1::Button1Click(TObject *Sender)
 {
 	try{
+		ErrorInVar->Canvas->Brush->Color = clBtnFace;
+		ErrorInVar->Canvas->FloodFill(1,1,clBtnFace,fsBorder);
 
 		AnsiString str = "(" + Edit1->Text + ")";
 		for(int i = 1; i <= str.Length(); i++)
@@ -99,19 +104,13 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 						st.push_back('(');
 						break;
 					case ')':
-						if(st.empty()) throw 42;
-						while(st.back() != '('){
+						while(st.back() != '(')
 							ex.push_back(st.pop_back());
-							if(st.empty()) throw 42;
-						}
 						st.pop_back();
 						break;
 					default:
-						if(st.empty()) throw 42;
-						while(OperPrior(str[i]) <= OperPrior(st.back())){
+						while(OperPrior(str[i]) <= OperPrior(st.back()))
 							ex.push_back(st.pop_back());
-							if(st.empty()) throw 42;
-						}
 						st.push_back(str[i]);
 				}
 			}
@@ -131,9 +130,7 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 			if(vars.Pos(ex.back()) != 0)
 				s.push_back(GetVarValue(ex.back()));
 			if(opers.Pos(ex.back()) != 0){
-				if(s.empty()) throw 42;
 				double t2 = s.pop_back();
-				if(s.empty()) throw 42;
 				double t1 = s.pop_back();
 				switch(ex.back()){
 					case '+':
@@ -153,9 +150,6 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 				}
 			}
 			ex.pop_back();
-			int tmp;
-			tmp = ex.Length();
-			tmp = tmp;
 		}
 
 		if(s.empty()) throw 42;
