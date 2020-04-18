@@ -15,7 +15,7 @@ public:
 	Stack(){
 		CurVrt = nullptr;
 	}
-	Stack(const T & x){
+	Stack(const Stack<T> & x){
 		CurVrt = nullptr;
 		Vertex* it = x.CurVrt;
 		while(it != nullptr){

@@ -46,8 +46,8 @@ double StringToFloat(AnsiString s){
 		t = 0;
 		Form1->ErrorInVar->Canvas->Brush->Color = clRed;
 		Form1->ErrorInVar->Canvas->FloodFill(1,1,clRed,fsBorder);
-		// По неизвестной мне причине любая из следующих двух строк кода вызывает необрабатываемую ошибку
 		//ShowMessage("Неверное значение переменной");
+		// По неизвестной мне причине следующая строка кода вызывает необрабатываемую ошибку
 		//throw 42;
 	}
 	return t;
