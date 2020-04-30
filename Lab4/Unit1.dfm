@@ -27,7 +27,7 @@ object Form1: TForm1
     Width = 225
     Height = 21
     TabOrder = 0
-    TextHint = #1052#1072#1090#1077#1084#1072#1090#1080#1095#1077#1089#1082#1086#1077' '#1074#1099#1088#1072#1078#1077#1085#1080#1077
+    TextHint = 'Mathematical expression'
   end
   object EditRes: TEdit
     Left = 294
@@ -37,7 +37,7 @@ object Form1: TForm1
     TabStop = False
     ReadOnly = True
     TabOrder = 7
-    Text = #1056#1077#1079#1091#1083#1100#1090#1072#1090' '#1074#1099#1095#1080#1089#1083#1077#1085#1080#1081
+    Text = 'Calculation result'
   end
   object Button1: TButton
     Left = 255
@@ -96,7 +96,7 @@ object Form1: TForm1
     TabStop = False
     ReadOnly = True
     TabOrder = 8
-    Text = #1054#1073#1088#1072#1090#1085#1072#1103' '#1087#1086#1083#1100#1089#1082#1072#1103' '#1079#1072#1087#1080#1089#1100
+    Text = 'Reverse polish notation'
   end
   object Button8: TButton
     Left = 16

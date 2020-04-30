@@ -37,8 +37,8 @@ int OperPrior(char x){
 double StringToFloat(AnsiString s){
 	if(s.IsEmpty()) return 0.0;
 	for(int i = 1; i <= s.Length(); i++)
-		if(s[i] == '.')
-			s[i] = ',';
+		if(s[i] == '.' || s[i] == ',')
+			s[i] = FormatSettings.DecimalSeparator;
 
 	double t;
 	bool OK = TryStrToFloat(s, t);
@@ -46,9 +46,6 @@ double StringToFloat(AnsiString s){
 		t = 0;
 		Form1->ErrorInVar->Canvas->Brush->Color = clRed;
 		Form1->ErrorInVar->Canvas->FloodFill(1,1,clRed,fsBorder);
-		//ShowMessage("Неверное значение переменной");
-		// По неизвестной мне причине следующая строка кода вызывает необрабатываемую ошибку
-		//throw 42;
 	}
 	return t;
 }
@@ -157,9 +154,9 @@ void __fastcall TForm1::Button1Click(TObject *Sender)
 		if(!s.empty()) throw 42;
 
 	} catch(...) {
-		EditRes->Text = "Результат вычисления";
-		EditRPN->Text = "Обратная польская запись";
-		ShowMessage("Неверное выражение");
+		EditRes->Text = "Calculation result";
+		EditRPN->Text = "Reverse polish notation";
+		ShowMessage("Wrong expression");
 	}
 }
 //---------------------------------------------------------------------------
@@ -172,6 +169,6 @@ void __fastcall TForm1::Button8Click(TObject *Sender)
 	EditD->Text = "7.9";
 	EditE->Text = "1.6";
     Button1Click(Sender);
-	ShowMessage("Ответ: 1.151");
+	ShowMessage("Answer: 1.151");
 }
 //---------------------------------------------------------------------------
