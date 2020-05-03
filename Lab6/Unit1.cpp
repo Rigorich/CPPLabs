@@ -32,7 +32,8 @@ class TestTree : public Tree<int, AnsiString> {
 	void dfs(Vertex* vrt, int lvl, int* levels) {
 		if (!vrt)
 			return;
-		levels[lvl]++;
+		if (!vrt->left && !vrt->right)
+			levels[lvl]++;
 		dfs(vrt->left, lvl + 1, levels);
 		dfs(vrt->right, lvl + 1, levels);
 	}
@@ -72,10 +73,10 @@ public:
 	void levels(TStringGrid* SG) {
 		SG->ColCount = 1;
 		int lvls[42];
-		for (int i = 0; i < 42; i++)
+		for (int i = 0; i < 10; i++)
 			lvls[i] = 0;
 		dfs(root, 1, lvls);
-		for (int i = 1; lvls[i] && i < 42; i++) {
+		for (int i = 1; i < 10; i++) {
 			SG->ColCount++;
 			SG->Cells[i][0] = IntToStr(i);
 			SG->Cells[i][1] = IntToStr(lvls[i]);
@@ -247,6 +248,6 @@ void __fastcall TForm1::FormCreate(TObject *Sender) {
 
 	StringGridLevels->ColWidths[0] = 75;
 	StringGridLevels->Cells[0][0] = "Level";
-	StringGridLevels->Cells[0][1] = "Count";
+	StringGridLevels->Cells[0][1] = "Leafs";
 }
 // ---------------------------------------------------------------------------

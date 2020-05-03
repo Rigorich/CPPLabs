@@ -52,7 +52,6 @@ object Form1: TForm1
     Caption = 'Add new to Tree'
     TabOrder = 2
     OnClick = ButtonAddClick
-    ExplicitLeft = 547
   end
   object ButtonClear: TButton
     Left = 597
@@ -63,7 +62,6 @@ object Form1: TForm1
     Caption = 'Clear'
     TabOrder = 3
     OnClick = ButtonClearClick
-    ExplicitLeft = 547
   end
   object ButtonDelete: TButton
     Left = 672
@@ -87,7 +85,6 @@ object Form1: TForm1
     ShowHint = False
     TabOrder = 5
     TextHint = 'New key'
-    ExplicitLeft = 547
   end
   object EditValue: TEdit
     Left = 597
@@ -99,7 +96,6 @@ object Form1: TForm1
     ShowHint = False
     TabOrder = 6
     TextHint = 'New value'
-    ExplicitLeft = 547
   end
   object ButtonMove: TButton
     Left = 597
@@ -110,7 +106,6 @@ object Form1: TForm1
     Caption = 'StringGrid -> Tree'
     TabOrder = 7
     OnClick = ButtonMoveClick
-    ExplicitLeft = 547
   end
   object EditDelKey: TEdit
     Left = 597
@@ -134,7 +129,6 @@ object Form1: TForm1
     Caption = 'New empty cell'
     TabOrder = 9
     OnClick = ButtonNewClick
-    ExplicitLeft = 547
   end
   object ButtonRandom: TButton
     Left = 597
@@ -145,7 +139,6 @@ object Form1: TForm1
     Caption = 'New random cell'
     TabOrder = 10
     OnClick = ButtonRandomClick
-    ExplicitLeft = 547
   end
   object StringGridLevels: TStringGrid
     Left = 8
